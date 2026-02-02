@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Cab Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #87ceeb, #f2f2f2);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 200px;
+      margin: 30px auto;
+      overflow: hidden;
+      background: #333;
+      border-radius: 10px;
+    }
+
+    .road {
+      position: absolute;
+      bottom: 0;
+      width: 200%;
+      height: 60px;
+      background: repeating-linear-gradient(
+        to right,
+        #444 0px,
+        #444 20px,
+        #fff 20px,
+        #fff 40px
+      );
+      animation: roadMove 1s linear infinite;
+    }
+
+    @keyframes roadMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .cab {
+      position: absolute;
+      bottom: 40px;
+      left: 50px;
+      width: 120px;
+      animation: cabBounce 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes cabBounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-6px); }
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #ffb703;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #faa307;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚕 Smart Cab Booking – Animated UI</h1>
+
+  <div class="scene">
+    <div class="road"></div>
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995475.png" class="cab" id="cabImage" alt="Cab">
+  </div>
+
+
+  <div class="controls">
+    <button onclick="startRide()">Start Ride</button>
+    <button onclick="stopRide()">Stop Ride</button>
+  </div>
+
+  <script>
+    const road = document.querySelector('.road');
+    const cab = document.getElementById('cabImage');
+
+    function startRide() {
+      road.style.animationPlayState = 'running';
+      cab.style.animationPlayState = 'running';
+    }
+
+    function stopRide() {
+      road.style.animationPlayState = 'paused';
+      cab.style.animationPlayState = 'paused';
+    }
+
+    // Start animation by default
+    startRide();
+  </script>
+
+</body>
+</html>
